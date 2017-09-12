@@ -138,13 +138,6 @@
  }
 
 
-
-
-
-
-
-
-
  function validateDeliveryDate() { //IAM 9.01.17 - function that validateDeliveryDate
    //#billingAddress input
    var selectElements = document.querySelectorAll("#deliveryDate select");
@@ -176,6 +169,41 @@
    }
 
  }
+
+
+
+
+
+
+
+
+
+ function validateCreateAccount() { //IAM 9.01.17 - function that validateCreateAccount
+   var errorDiv = document.querySelectorAll("#createAccount .errorMessage")[0];
+   var fieldsetValidity = true;
+   try { // try to get a mistake in the fieldset
+     alert("bfhdjskbfhjdsl");
+     fieldsetValidity = false;
+     if (fieldsetValidity === false) {
+       throw "Please complete all fields to create and account.";
+     } else {
+       errorDiv.style.display = "none"; // IAM 9-5-17 sets the display to nothing
+       errorDiv.innerHTML = ""; // IAM 9-5-17 sets the text to nothing
+     }
+   } catch (msg) { // pick up the error in the fieldset
+     errorDiv.style.display = "block";
+     errorDiv.innerHTML = msg;
+     formValidity = false;
+   }
+
+ }
+
+
+
+
+
+
+
 
 
  function validatePayment() { //IAM 9.01.17 - function that validateDeliveryDate
@@ -279,6 +307,7 @@
    validateDeliveryDate();
    validatePayment();
    validateMessage();
+   validateCreateAccount();
 
    // NOTE: Doing validity testing
    if (formValidity === true) { //form is valid
