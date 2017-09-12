@@ -244,15 +244,15 @@
    var msgBox = document.getElementById("customText");
    var fieldsetValidity = true;
 
-   try { // try to get a mistake in the fieldset
-     if (document.getElementById("custom").checked && msgBox.value === "" || msgBox.value === msgBox.placeholder) { //error
+   try { // try to get a mistake in the custom message
+     if (document.getElementById("custom").checked && msgBox.value === "" || msgBox.value === msgBox.placeholder) { //error in the custom message box
        fieldsetValidity = false;
-       throw "Please enter custom Message text.";
+       msgBox.style.background = "rgba(255, 0, 0, 0.50)";
      } else { //not error
-
+       msgBox.style.background = "white";
      }
      if (fieldsetValidity === false) {
-       throw "Please complete all Message information.";
+       throw "Please specify a custom message.";
      } else {
        errorDiv.style.display = "none"; // IAM 9-5-17 sets the display to nothing
        errorDiv.innerHTML = ""; // IAM 9-5-17 sets the text to nothing
@@ -266,7 +266,7 @@
  }
 
  function validateForm(evt) { // IAM 9.05.17 - function that is called hen the page is set up for form validation
-   if (evt.preventDefault) { // IAM 8.31.17 - prevents new and old browsers from running auto submit.
+   if (evt.preventDefault) { // IAM 8.31.17 - prevents new and old browsers from running auto validate.
      evt.preventDefault();
    } else {
      evt.returnValue = false;
