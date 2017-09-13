@@ -194,24 +194,18 @@
      pass1Element.style.background = "none";
      pass2Element.style.background = "none";
      errorDiv.style.display = "none";
+
      if (userName.value !== "" && pass1Element.value !== "" && pass2Element.value !== "") { // error
        if (pass1Element.value !== pass2Element.value) {
          passwordMismatch = true;
          throw "Passwords do not match, please re-enter";
        }
-     }
-     if (userName.value === "") { //if the user name is noting it will add to the blank count
-       ++blankCount
-     }
-     if (pass1Element.value === "") {
-       ++blankCount
-     }
-     if (pass2Element.value === "") {
-       ++blankCount
-     }
-     if (blankCount == 1 || blankCount == 2) {
-
-       throw "please complete all fields to create an account";
+     } else if (userName.value === "" && pass1Element.value === "" && pass2Element.value === "") {
+       // simplfied the if statements to three if statements
+       fieldsetValidity = true;
+     } else {
+       fieldsetValidity = false;
+       throw "Enter all data fields to create an account.";
      }
    } catch (msg) { // pick up the error
      errorDiv.style.display = "block";
@@ -221,11 +215,8 @@
      pass2Element.style.background = invColor;
      if (passwordMismatch) {
        userName.style.background = "";
-     }
-     else {
+     } else { // anything else
        userName.style.background = invColor;
-       pass1Element.style.background = invColor;
-       pass2Element.style.background = invColor;
      }
    }
 
