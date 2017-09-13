@@ -11,6 +11,7 @@
  var thirty = document.createDocumentFragment();
  var thirtyOne = document.createDocumentFragment();
  var formValidity = true;
+ var invColor = "rgb(255, 100, 100)";
 
  function setUpDays() { // I.A.M 8.25.17 - Get the important select list from the DOM
    var dates = document.getElementById("delivDy").getElementsByTagName("option");
@@ -107,7 +108,7 @@
        currentElement = inputElements[i];
        if (currentElement.value === "") {
          // debugger;
-         currentElement.style.background = "rgba(255, 0, 0, 0.50)"; // changes background color of what needs to be filled in
+         currentElement.style.background = invColor; // changes background color of what needs to be filled in
          fieldsetValidity = false;
        } else {
          currentElement.style.background = "white";
@@ -181,9 +182,17 @@
  function validateCreateAccount() { //IAM 9.01.17 - function that validateCreateAccount
    var errorDiv = document.querySelectorAll("#createAccount .errorMessage")[0];
    var fieldsetValidity = true;
+   var userName = document.getElementById("username");
+   var pass1Element = document.getElementById("pass1");
+   var pass2Element = document.getElementById("pass2");
+
+
    try { // try to get a mistake in the fieldset
-     alert("bfhdjskbfhjdsl");
-     fieldsetValidity = false;
+     if (true) {
+
+     } else {
+
+     }
      if (fieldsetValidity === false) {
        throw "Please complete all fields to create and account.";
      } else {
@@ -228,7 +237,7 @@
        }
      }
      if (ccNumElement.value === "") { // IAM 9.7.17 - if the card number value is nothng make the backgroud red
-       ccNumElement.style.background = "rgba(255, 0, 0, 0.50)";
+       ccNumElement.style.background = invColor;
        fieldsetValidity = false;
      } else {
        ccNumElement.style.background = "white";
@@ -243,7 +252,7 @@
        }
      }
      if (cvvElement.value === "") { // IAM 9.7.17 - if the card number value is nothng make the backgroud red
-       cvvElement.style.background = "rgba(255, 0, 0, 0.50)";
+       cvvElement.style.background = invColor;
        fieldsetValidity = false;
      } else {
        cvvElement.style.background = "white";
@@ -275,7 +284,7 @@
    try { // try to get a mistake in the custom message
      if (document.getElementById("custom").checked && msgBox.value === "" || msgBox.value === msgBox.placeholder) { //error in the custom message box
        fieldsetValidity = false;
-       msgBox.style.background = "rgba(255, 0, 0, 0.50)";
+       msgBox.style.background = invColor;
      } else { //not error
        msgBox.style.background = "white";
      }
